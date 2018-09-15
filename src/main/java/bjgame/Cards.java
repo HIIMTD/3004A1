@@ -7,9 +7,9 @@ public class Cards {
 	private Suit suit;
 	
 	//cons
-	public Cards(Suit s, int r){
-		this.suit = s;
-		this.rank = r;
+	public Cards(Suit suit, int rank){
+		this.suit = suit;
+		this.rank = rank;
 	}
 	
 	//get function
