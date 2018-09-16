@@ -14,6 +14,11 @@ public class Hand {
 		handcards.add(card);
 	}
 	
+	public void addScore() {
+		
+		
+	}
+	
 	public int getHandSize() {
 		return handcards.size();
 	}
