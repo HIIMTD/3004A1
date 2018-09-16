@@ -4,12 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Hand {
-	private List<Card> cards = new ArrayList<>();
+	private List<Card> handcards;
 	
-	public void addCard(Card card) {
-		cards.add(card);
+	public Hand() {
+		this.handcards = new ArrayList<Card>();
 	}
 	
+	public void addCard(Card card) {
+		handcards.add(card);
+	}
+	
+	public int getHandSize() {
+		return handcards.size();
+	}
 	public int getValue() {
 		return 0;
 	}

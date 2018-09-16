@@ -6,22 +6,22 @@ import java.util.Collections;
 import java.util.List;
 
 public class Deck {
-	public List<Card> deck;
+	public List<Card> cards;
 
 
 //cons
 	public Deck() {
-		this.deck = new ArrayList<Card>();
+		this.cards = new ArrayList<Card>();
 	}
 	
 	public void createDeck() {
 		for(CardSuit suit : CardSuit.values() ) {
 			for(CardRank rank: CardRank.values()) {
-				this.deck.add(new Card(suit, rank));
+				this.cards.add(new Card(suit, rank));
 			}
 				
 		}
-		Collections.shuffle(deck);
+		Collections.shuffle(cards);
 		
 //		for (int i = 0; i < deck.size(); i++) {
 //			System.out.println(deck.get(i));
@@ -30,11 +30,11 @@ public class Deck {
 	
 
 	public int size() {
-		return deck.size();
+		return cards.size();
 		
 	}
 	
 	public Card draw() {
-		return deck.remove(deck.size()-1);
+		return cards.remove(cards.size()-1);
 	}
 }

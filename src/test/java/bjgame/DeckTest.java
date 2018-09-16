@@ -31,11 +31,20 @@ public class DeckTest extends TestCase {
 		assertTrue(duplicate<5);
 			
 		}
+	}
+		
+		public void testDrawDeck() {
+			Deck deck = new Deck();
+			deck.createDeck();
+			assertEquals(52, deck.size());
+			deck.draw();
+			assertEquals(51, deck.size());
+		}
 		
 
 
 		// assertEquals(deck1,deck2);
 		// deck2.shuffle();
 		// assertFalse(deck1.equals(deck2));
-	}
+	
 }

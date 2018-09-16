@@ -1,12 +1,10 @@
 package bjgame;
 
-import static org.junit.Assert.*;
 
-import org.junit.Test;
+import junit.framework.TestCase;
 
-public class HandTest {
+public class HandTest extends TestCase{
 
-	@Test
 	public void testIsBackJack() {
 		Hand hand = new Hand();
 		hand.addCard(new Card(CardSuit.C, CardRank.ACE));
@@ -16,7 +14,7 @@ public class HandTest {
 		assertTrue(hand.isBlackJack());
 	}
 	
-	@Test
+
 	public void testIsBusted() {
 		
 	}
