@@ -35,6 +35,10 @@ public class Hand {
 			tempPoint += card.getRank().getValue();
 			point = tempPoint;
 			
+		}if (tempPoint == 21) {
+			blackjack = true;
+			point = tempPoint;
+			
 		}
 		if (tempPoint > 21 && numberOfAce == 0) {
 			bust = true;
