@@ -5,37 +5,69 @@ import java.util.List;
 
 public class Hand {
 	private List<Card> handcards;
+	private int point;
+	private boolean blackjack;
+	private boolean bust;
+	private boolean soft17;
 	
 	public Hand() {
 		this.handcards = new ArrayList<Card>();
+		point = 0;
+		blackjack = false;
+		bust = false;
+		soft17 = false;
 	}
 	
 	public void addCard(Card card) {
 		handcards.add(card);
 	}
 	
-	public void addScore() {
+	public void addPoints() {
+		int tempPoint = 0;
+		int numberOfAce = 0;
+		for(Card card : this.handcards) {
+			if (card.getRank().getValue() == 1) {
+				numberOfAce++;
+			}
+			tempPoint += card.getRank().getValue();
+		}
+		if (tempPoint > 21 && numberOfAce == 0) {
+			bust = true;
+			point = tempPoint;
+		}else if (tempPoint >21 && numberOfAce > 0) {
+			while(numberOfAce > 0) {
+			tempPoint -= 10;
+			numberOfAce --;
+				if (tempPoint <= 21) {
+					break;
+				}
+			}
+			point = tempPoint;
+			
+		}
 		
 		
 	}
 	
+
 	public int getHandSize() {
 		return handcards.size();
 	}
+	
 	public int getValue() {
 		return 0;
 	}
 	
-	public boolean isBlackJack() {
-		return false;
+	public boolean isBlackjack() {
+		return blackjack;
 	}
 	
 	public boolean isBusted() {
-		return false;
+		return bust;
 	}
 	
 	private boolean isSoft17() {
-		return false;
+		return soft17;
 	}
 	public boolean canDealerHit() {
 		if (getValue() < 17 || isSoft17() ) {
@@ -43,5 +75,9 @@ public class Hand {
 		}
 		
 		return false;
+	}
+
+	public int getPoints() {
+		return point;
 	}
 }
