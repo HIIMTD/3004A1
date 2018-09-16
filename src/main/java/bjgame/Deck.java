@@ -3,10 +3,10 @@ package bjgame;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Stack;
+import java.util.List;
 
 public class Deck {
-	public ArrayList<Cards> deck;
+	public List<Cards> deck;
 
 
 //cons
@@ -15,12 +15,20 @@ public class Deck {
 	}
 	
 	public void createDeck() {
-		for(Cards.Suit suit : Cards.Suit.values() ) {
-			for(int i = 1; i < 14 ; i++)
-				this.deck.add(new Cards(suit, i));
+		for(CardSuit suit : CardSuit.values() ) {
+			for(CardRank rank: CardRank.values()) {
+				this.deck.add(new Cards(suit, rank));
+			}
+				
 		}
 		Collections.shuffle(deck);
+		
+		for (int i = 0; i < deck.size(); i++) {
+			System.out.println(deck.get(i));
+		}
 	}
+	
+	
 	/*
 	public void shuffle() {
 		Collections.shuffle(deck);

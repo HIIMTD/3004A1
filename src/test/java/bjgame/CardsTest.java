@@ -5,18 +5,13 @@ import junit.framework.TestCase;
 public class CardsTest extends TestCase{
 	
 	public void testConstructor() {
-		Cards card = new Cards(Cards.Suit.S,11);
-		assertEquals(11, card.getRank());
-		assertEquals(Cards.Suit.S, card.getSuit());
+		Cards card = new Cards(CardSuit.S, CardRank.JACK);
+		assertEquals(CardRank.JACK, card.getRank());
+		assertEquals(CardSuit.S, card.getSuit());
 	}
 	
 	public void testToString1() {
-		Cards card = new Cards(Cards.Suit.H,4);
-		assertEquals("H4", card.toString());
-	}
-	
-	public void testToString2() {
-		Cards card = new Cards(Cards.Suit.D,13);
-		assertEquals("DK", card.toString());
+		Cards card = new Cards(CardSuit.H, CardRank.JACK);
+		assertEquals("HJ", card.toString());
 	}
 }
