@@ -32,14 +32,16 @@ public class DeckTest extends TestCase {
 			
 		}
 	}
-		
-		public void testDrawDeck() {
-			Deck deck = new Deck();
-			deck.createDeck();
-			assertEquals(52, deck.size());
-			deck.draw();
-			assertEquals(51, deck.size());
-		}
+//		
+//		public void testDrawDeck() {
+//			Deck comingfromdeck = new Deck();
+//			comingfromdeck.createDeck();
+//			assertEquals(52, comingfromdeck.size());
+//			Deck newdeck = new Deck();
+//			newdeck.draw(comingfromdeck);
+//			assertEquals(51, comingfromdeck.size());
+//			assertEquals(1, newdeck.size());
+//		}
 		
 
 
