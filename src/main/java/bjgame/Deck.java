@@ -6,18 +6,18 @@ import java.util.Collections;
 import java.util.List;
 
 public class Deck {
-	public List<Cards> deck;
+	public List<Card> deck;
 
 
 //cons
 	public Deck() {
-		this.deck = new ArrayList<Cards>();
+		this.deck = new ArrayList<Card>();
 	}
 	
 	public void createDeck() {
 		for(CardSuit suit : CardSuit.values() ) {
 			for(CardRank rank: CardRank.values()) {
-				this.deck.add(new Cards(suit, rank));
+				this.deck.add(new Card(suit, rank));
 			}
 				
 		}
