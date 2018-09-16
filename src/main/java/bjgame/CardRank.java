@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum CardRank {
-	ACE(1,"A"),
+	ACE(11,"A"),
 	TWO(2, "2"), 
 	THREE(3, "3"),
 	FOUR(4,"4"),

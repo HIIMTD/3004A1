@@ -3,6 +3,8 @@ package bjgame;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.print.attribute.standard.PrinterLocation;
+
 public class Hand {
 	private List<Card> handcards;
 	private int point;
@@ -20,16 +22,19 @@ public class Hand {
 	
 	public void addCard(Card card) {
 		handcards.add(card);
+		addPoints();
 	}
 	
 	public void addPoints() {
 		int tempPoint = 0;
 		int numberOfAce = 0;
 		for(Card card : this.handcards) {
-			if (card.getRank().getValue() == 1) {
+			if (card.getRank().getValue() == 11) {
 				numberOfAce++;
 			}
 			tempPoint += card.getRank().getValue();
+			point = tempPoint;
+			
 		}
 		if (tempPoint > 21 && numberOfAce == 0) {
 			bust = true;
@@ -46,7 +51,7 @@ public class Hand {
 			
 		}
 		
-		
+
 	}
 	
 
@@ -54,9 +59,6 @@ public class Hand {
 		return handcards.size();
 	}
 	
-	public int getValue() {
-		return 0;
-	}
 	
 	public boolean isBlackjack() {
 		return blackjack;
@@ -69,13 +71,13 @@ public class Hand {
 	private boolean isSoft17() {
 		return soft17;
 	}
-	public boolean canDealerHit() {
-		if (getValue() < 17 || isSoft17() ) {
-			return true;
-		}
-		
-		return false;
-	}
+//	public boolean canDealerHit() {
+//		if (getValue() < 17 || isSoft17() ) {
+//			return true;
+//		}
+//		
+//		return false;
+//	}
 
 	public int getPoints() {
 		return point;

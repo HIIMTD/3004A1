@@ -6,7 +6,7 @@ import junit.framework.TestCase;
 public class HandTest extends TestCase{
 	
 	//test add point 
-	public void testAddPoints() {
+	public void testAddPoints1() {
 		Hand handcards = new Hand();
 		handcards.addCard(new Card(CardSuit.S, CardRank.KING));
 		assertEquals(10, handcards.getPoints());
@@ -14,6 +14,40 @@ public class HandTest extends TestCase{
 		assertEquals(17, handcards.getPoints());
 				
 	}
+	
+	//ACE tests from professor
+	public void testACE1() {
+		Hand handcards = new Hand();
+		handcards.addCard(new Card(CardSuit.S, CardRank.ACE));
+		handcards.addCard(new Card(CardSuit.H, CardRank.ACE));
+		handcards.addCard(new Card(CardSuit.C, CardRank.EIGHT));
+		assertEquals(20, handcards.getPoints());
+				
+	}
+	
+	public void testACE2() {
+		Hand handcards = new Hand();
+		handcards.addCard(new Card(CardSuit.S, CardRank.ACE));
+		handcards.addCard(new Card(CardSuit.H, CardRank.ACE));
+		handcards.addCard(new Card(CardSuit.H, CardRank.EIGHT));
+		handcards.addCard(new Card(CardSuit.S, CardRank.NINE));
+		assertEquals(19, handcards.getPoints());
+				
+	}
+	
+	
+	public void testACE3() {
+		Hand handcards = new Hand();
+		handcards.addCard(new Card(CardSuit.S, CardRank.ACE));
+		handcards.addCard(new Card(CardSuit.H, CardRank.FIVE));
+		handcards.addCard(new Card(CardSuit.D, CardRank.ACE));
+		assertEquals(17, handcards.getPoints());
+		handcards.addCard(new Card(CardSuit.C, CardRank.TEN));
+		assertEquals(17, handcards.getPoints());
+
+				
+	}
+	
 	
 	//test blackjack
 	public void testIsBackJack() {
