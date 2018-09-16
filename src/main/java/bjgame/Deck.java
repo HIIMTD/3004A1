@@ -23,19 +23,18 @@ public class Deck {
 		}
 		Collections.shuffle(deck);
 		
-		for (int i = 0; i < deck.size(); i++) {
-			System.out.println(deck.get(i));
-		}
+//		for (int i = 0; i < deck.size(); i++) {
+//			System.out.println(deck.get(i));
+//		}
 	}
 	
-	
-	/*
-	public void shuffle() {
-		Collections.shuffle(deck);
-	}
-	*/
+
 	public int size() {
 		return deck.size();
 		
+	}
+	
+	public Card draw() {
+		return deck.remove(deck.size()-1);
 	}
 }

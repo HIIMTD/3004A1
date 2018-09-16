@@ -1,11 +1,9 @@
 package bjgame;
 
-import static org.junit.Assert.*;
+import junit.framework.TestCase;
 
-import org.junit.Test;
+public class CardSuitTest extends TestCase{
 
-public class CardSuitTest {
-	@Test
 	public void testGetSuit() {
 		assertEquals("Incorrect suit", CardSuit.S, CardSuit.valueOf("S"));
 	}

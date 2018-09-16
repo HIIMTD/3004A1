@@ -19,9 +19,9 @@ public class Card {
 		return suit.toString() + rank.getName();
 	}
 	
-	public String getLongName() {
-		return rank.getName() + " of " + suit.toString() + "s";
-	}
+//	public String getLongName() {
+//		return rank.getName() + " of " + suit.toString() + "s";
+//	}
 	
 	public String toString() {
 		return getShortName();

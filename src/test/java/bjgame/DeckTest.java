@@ -16,15 +16,26 @@ public class DeckTest extends TestCase {
 		assertEquals(52, deck.size());
 	}
 
-//	public void testShuffle() {
-//		Deck deck1 = new Deck();
-//		Deck deck2 = new Deck();
-//		// (deck1.equals(deck2));
-//		assertEquals(deck1, deck2);
-//		deck1.createDeck();
-//		deck2.createDeck();
-//		// assertEquals(deck1,deck2);
-//		// deck2.shuffle();
-//		// assertFalse(deck1.equals(deck2));
-//	}
+	public void testShuffle() {
+		Deck deck1 = new Deck();
+		Deck deck2 = new Deck();
+		deck1.createDeck();
+		deck2.createDeck();
+		int duplicate = 0;
+		for (int i = 0; i < 52; i++) {
+			Card a = deck1.draw();
+			Card b = deck2.draw();
+			if (a.getSuit() == b.getSuit() && a.getRank()==b.getRank()) {
+				duplicate++;
+			}
+		assertTrue(duplicate<5);
+			
+		}
+		
+
+
+		// assertEquals(deck1,deck2);
+		// deck2.shuffle();
+		// assertFalse(deck1.equals(deck2));
+	}
 }
