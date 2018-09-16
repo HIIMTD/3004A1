@@ -8,7 +8,7 @@ public class PlayerTest extends TestCase {
 	public void testStart() {
 		Player player = new Player();
 		player.firstTwoDraw(new Card(CardSuit.H, CardRank.SEVEN), new Card(CardSuit.S, CardRank.NINE));
-		assertFalse(blackjack);
+		assertFalse(player.isblackjack());
 		assertEquals(16, player.getHandcard().getPoints());
 		
 	}
@@ -16,9 +16,17 @@ public class PlayerTest extends TestCase {
 	public void testHit() {
 		Player player = new Player();
 		player.firstTwoDraw(new Card(CardSuit.H, CardRank.SEVEN), new Card(CardSuit.S, CardRank.NINE));
-		assertFalse(blackjack);
+		assertFalse(player.isblackjack());
 		player.hit(new Card(CardSuit.S, CardRank.KING));
 		assertTrue(bust);
 		assertEquals(26, player.getHandcard().getPoints());
 	}
-}
+
+
+	public void testStand() {
+		Player player = new Player();
+		player.firstTwoDraw(new Card(CardSuit.H, CardRank.SEVEN), new Card(CardSuit.S, CardRank.NINE));
+		assertEquals(20, player.getHandcard().getPoints());
+		assertTrue(player.isStand());
+		
+	}
