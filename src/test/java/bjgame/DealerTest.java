@@ -112,17 +112,43 @@ public class DealerTest extends TestCase{
 		
 	}
 	
-	publc void testStand1() {Dealer dealer = new Dealer();
+	//test dealer stand by 20
+	public void testStand1() {Dealer dealer = new Dealer();
 	dealer.firstTwoDraw(new Card(CardSuit.H, CardRank.NINE), new Card(CardSuit.S, CardRank.KING));
 	assertEquals(19, dealer.getHand1().getPoints());
 	assertTrue(dealer.stand());
 	}
 	
-	publc void testStand2() {Dealer dealer = new Dealer();
-	dealer.firstTwoDraw(new Card(CardSuit.H, CardRank.FIVE), new Card(CardSuit.S, CardRank.KING));
-	assertEquals(19, dealer.getHand1().getPoints());
+	//stand 17 by 7+10
+	public void testStand2() {Dealer dealer = new Dealer();
+	dealer.firstTwoDraw(new Card(CardSuit.H, CardRank.SEVEN), new Card(CardSuit.S, CardRank.TEN));
+	assertEquals(17, dealer.getHand1().getPoints());
 	assertTrue(dealer.stand());
 	}
 	
+	//soft 17 by 11+6
+	public void testStand3() {Dealer dealer = new Dealer();
+	dealer.firstTwoDraw(new Card(CardSuit.H, CardRank.SIX), new Card(CardSuit.S, CardRank.ACE));
+	assertEquals(17, dealer.getHand1().getPoints());
+	assertFalse(dealer.stand());
+	}
+	
+	//soft 17 by 3+3+11
+	public void testStand4() {
+		Dealer dealer = new Dealer();
+		dealer.firstTwoDraw(new Card(CardSuit.C, CardRank.THREE), new Card(CardSuit.H, CardRank.THREE));
+		assertEquals(6, dealer.getHand1().getPoints());
+		assertFalse(dealer.stand());
+		dealer.hit(new Card(CardSuit.S,CardRank.ACE));
+		assertEquals(17, dealer.getHand1().getPoints());
+		assertFalse(dealer.stand());
+	}
+	
+	//21 by blackjack
+	public void testStand5() {Dealer dealer = new Dealer();
+	dealer.firstTwoDraw(new Card(CardSuit.H, CardRank.TEN), new Card(CardSuit.S, CardRank.ACE));
+	assertEquals(21, dealer.getHand1().getPoints());
+	assertTrue(dealer.stand());
+	}
 	
 }

@@ -7,12 +7,14 @@ public class Dealer {
 	private boolean blackjack;
 	private boolean bust;
 	private boolean isSoft17;
+	private boolean stand;
 
 	public Dealer() {
 		pHand1 = new Hand();
 		blackjack = false;
 		bust = false;
 		isSoft17 = false;
+		stand = false;
 	}
 	public Hand getHand1() {return pHand1;}
 	
@@ -48,4 +50,12 @@ public class Dealer {
 		}
 		return bust;
 	}
-}
+
+
+	public boolean stand() {
+		if(pHand1.getPoints() >= 17 && !(this.isSoft17())) {
+			stand = true;
+		}
+		return stand;
+	}
+	}
