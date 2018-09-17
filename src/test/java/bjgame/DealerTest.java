@@ -8,7 +8,7 @@ public class DealerTest extends TestCase{
 		Dealer dealer = new Dealer();
 		dealer.firstTwoDraw(new Card(CardSuit.H, CardRank.ACE), new Card(CardSuit.S, CardRank.NINE));
 		assertFalse(dealer.isBlackjack());
-		assertEquals(16, dealer.getHand1().getPoints());
+		assertEquals(20, dealer.getHand1().getPoints());
 		
 	}
 
@@ -21,7 +21,9 @@ public class DealerTest extends TestCase{
 		
 	}
 	
+	//test if it's soft17
 	
+	//6+11 is soft 17
 	public void testSoft17() {
 		Dealer dealer = new Dealer();
 		dealer.firstTwoDraw(new Card(CardSuit.C, CardRank.SIX), new Card(CardSuit.H, CardRank.ACE));
@@ -29,7 +31,44 @@ public class DealerTest extends TestCase{
 		assertTrue(dealer.isSoft17());
 	}
 	
+	//6+10+1 is not soft17
+	public void testSoft172() {
+		Dealer dealer = new Dealer();
+		dealer.firstTwoDraw(new Card(CardSuit.C, CardRank.SIX), new Card(CardSuit.H, CardRank.KING));
+		assertEquals(16, dealer.getHand1().getPoints());
+		assertFalse(dealer.isSoft17());
+		dealer.hit(new Card(CardSuit.D,CardRank.ACE));
+		assertFalse(dealer.isSoft17());
+		assertEquals(17, dealer.getHand1().getPoints());
+	}
 	
+	//6+9+1+1 is not soft 17
+	public void testSoft173() {
+		Dealer dealer = new Dealer();
+		dealer.firstTwoDraw(new Card(CardSuit.C, CardRank.SIX), new Card(CardSuit.H, CardRank.NINE));
+		assertEquals(15, dealer.getHand1().getPoints());
+		assertFalse(dealer.isSoft17());
+		dealer.hit(new Card(CardSuit.D,CardRank.ACE));
+		assertEquals(16, dealer.getHand1().getPoints());
+		assertFalse(dealer.isSoft17());
+		dealer.hit(new Card(CardSuit.S,CardRank.ACE));
+		assertEquals(17, dealer.getHand1().getPoints());
+		assertFalse(dealer.isSoft17());
+	}
+	
+	//3+3+11 is soft 17
+	public void testSoft174() {
+		Dealer dealer = new Dealer();
+		dealer.firstTwoDraw(new Card(CardSuit.C, CardRank.THREE), new Card(CardSuit.H, CardRank.THREE));
+		assertEquals(6, dealer.getHand1().getPoints());
+		assertFalse(dealer.isSoft17());
+		dealer.hit(new Card(CardSuit.S,CardRank.ACE));
+		assertEquals(17, dealer.getHand1().getPoints());
+		assertTrue(dealer.isSoft17());
+	}
+	
+	
+
 	public void testHit1()  {
 		Dealer dealer = new Dealer();
 		dealer.firstTwoDraw(new Card(CardSuit.H, CardRank.SEVEN), new Card(CardSuit.S, CardRank.NINE));
@@ -71,6 +110,18 @@ public class DealerTest extends TestCase{
 		assertTrue(dealer.isBusted());
 		assertEquals(30, dealer.getHand1().getPoints());
 		
+	}
+	
+	publc void testStand1() {Dealer dealer = new Dealer();
+	dealer.firstTwoDraw(new Card(CardSuit.H, CardRank.NINE), new Card(CardSuit.S, CardRank.KING));
+	assertEquals(19, dealer.getHand1().getPoints());
+	assertTrue(dealer.stand());
+	}
+	
+	publc void testStand2() {Dealer dealer = new Dealer();
+	dealer.firstTwoDraw(new Card(CardSuit.H, CardRank.FIVE), new Card(CardSuit.S, CardRank.KING));
+	assertEquals(19, dealer.getHand1().getPoints());
+	assertTrue(dealer.stand());
 	}
 	
 	

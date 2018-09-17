@@ -8,12 +8,16 @@ import javax.print.attribute.standard.PrinterLocation;
 public class Hand {
 	private List<Card> handcards;
 	private int point;
+	int numberOfAce;
+	int numberOfTen;
 
 
 	
 	public Hand() {
 		this.handcards = new ArrayList<Card>();
 		point = 0;
+		numberOfAce = 0;
+		numberOfTen = 0;
 
 	}
 	
@@ -24,18 +28,23 @@ public class Hand {
 	
 	public void addPoints() {
 		int tempPoint = 0;
-		int numberOfAce = 0;
+		int countAce = 0;
+		int counterTen = 0;
 		for(Card card : this.handcards) {
 			if (card.getRank().getValue() == 11) {
-				numberOfAce++;
+				countAce++;
+			}
+			if(card.getRank().getValue() == 10) {
+				counterTen++;
 			}
 			tempPoint += card.getRank().getValue();
 			point = tempPoint;
-		
+			numberOfAce = countAce;
+			numberOfTen = counterTen;
 		}if (tempPoint >21 && numberOfAce > 0) {
-			while(numberOfAce > 0) {
+			while(countAce > 0) {
 			tempPoint -= 10;
-			numberOfAce --;
+			countAce --;
 				if (tempPoint <= 21) {
 					break;
 				}
