@@ -11,7 +11,7 @@ public class GameTest extends TestCase {
 		Dealer d = new Dealer();
 		Game g = new Game();
 		p.firstTwoDraw(new Card(CardSuit.H, CardRank.EIGHT),new Card(CardSuit.S, CardRank.NINE));
-		d.firstTwoDraw(new Card(CardSuit.S, CardRank.ACE), new Card(CardSuit.C, CardRank.EIGHT)
+		d.firstTwoDraw(new Card(CardSuit.S, CardRank.ACE), new Card(CardSuit.C, CardRank.EIGHT));
 		assertEquals(17, p.getHand1().getPoints());
 		assertEquals(19, d.getHand1().getPoints());
 		assertFalse(p.isBlackjack());
@@ -20,7 +20,7 @@ public class GameTest extends TestCase {
 		p.hit(new Card(CardSuit.C, CardRank.TEN));
 		assertEquals(27, p.getHand1().getPoints());
 		assertTrue(p.isBusted());
-		assertTrue(isEnd);
+		assertTrue(g.isEnd());
 	}
 	
 	
@@ -30,16 +30,16 @@ public class GameTest extends TestCase {
 		Dealer d = new Dealer();
 		Game g = new Game();
 		p.firstTwoDraw(new Card(CardSuit.H, CardRank.KING),new Card(CardSuit.S, CardRank.QUEEN));
-		d.firstTwoDraw(new Card(CardSuit.S, CardRank.FIVE), new Card(CardSuit.C, CardRank.EIGHT)
+		d.firstTwoDraw(new Card(CardSuit.S, CardRank.FIVE), new Card(CardSuit.C, CardRank.EIGHT));
 		assertEquals(20, p.getHand1().getPoints());
 		assertEquals(13, d.getHand1().getPoints());
 		assertFalse(p.isBlackjack());
 		assertFalse(d.isBlackjack());
 		assertFalse(d.stand());
 		d.hit(new Card(CardSuit.C, CardRank.NINE));
-		assertEquals(22, p.getHand1().getPoints());
+		assertEquals(20, p.getHand1().getPoints());
 		assertTrue(d.isBusted());
-		assertTrue(isEnd);
+		assertTrue(g.isEnd());
 	}
 	
 	//player gets black jack but not dealer
@@ -48,12 +48,12 @@ public class GameTest extends TestCase {
 		Dealer d = new Dealer();
 		Game g = new Game();
 		p.firstTwoDraw(new Card(CardSuit.H, CardRank.KING),new Card(CardSuit.S, CardRank.ACE));
-		d.firstTwoDraw(new Card(CardSuit.S, CardRank.FIVE), new Card(CardSuit.C, CardRank.EIGHT)
+		d.firstTwoDraw(new Card(CardSuit.S, CardRank.FIVE), new Card(CardSuit.C, CardRank.EIGHT));
 		assertEquals(21, p.getHand1().getPoints());
 		assertEquals(13, d.getHand1().getPoints());
 		assertTrue(p.isBlackjack());
 		assertFalse(d.isBlackjack());
-		assertTrue(isEnd);
+		assertTrue(g.isEnd());
 	}
 	
 	//player gets black jack but dealer also gets
@@ -67,7 +67,7 @@ public class GameTest extends TestCase {
 		assertEquals(21, d.getHand1().getPoints());
 		assertTrue(p.isBlackjack());
 		assertTrue(d.isBlackjack());
-		assertTrue(isEnd);
+		assertTrue(g.isEnd());
 	}
 	
 	//dealer gets black jack but not player
@@ -81,7 +81,7 @@ public class GameTest extends TestCase {
 		assertEquals(21, d.getHand1().getPoints());
 		assertFalse(p.isBlackjack());
 		assertTrue(d.isBlackjack());
-		assertTrue(isEnd);
+		assertTrue(g.isEnd());
 	}
 	
 	
@@ -96,16 +96,15 @@ public class GameTest extends TestCase {
 		assertEquals(11, d.getHand1().getPoints());
 		assertFalse(p.isBlackjack());
 		assertFalse(d.isBlackjack());
-		assertFalse(isEnd);
+		//assertFalse(g.isEnd());
 		p.hit(new Card(CardSuit.C, CardRank.EIGHT));
-		assertEquals(17, p.getHand1().getPoints());
+		assertEquals(18, p.getHand1().getPoints());
 		assertFalse(p.isBusted());
-		assertFalse(d.isSoft17());
 		assertFalse(d.stand());
 		d.hit(new Card(CardSuit.D, CardRank.SIX));
 		assertEquals(17, d.getHand1().getPoints());
 		assertTrue(d.stand());
-		assertTrue(isEnd);
+		assertTrue(g.isEnd());
 	}
 	
 

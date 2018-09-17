@@ -3,7 +3,6 @@ package bjgame;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.print.attribute.standard.PrinterLocation;
 
 public class Hand {
 	private List<Card> handcards;
