@@ -60,22 +60,22 @@ public class HandTest extends TestCase{
 //	}
 	
 	//test burst
-	public void testIsBusted1() {
-		Hand hand = new Hand();
-		hand.addCard(new Card(CardSuit.C, CardRank.KING));
-		hand.addCard(new Card(CardSuit.C, CardRank.QUEEN));
-		hand.addCard(new Card(CardSuit.C, CardRank.JACK));
-		assertTrue(hand.isBusted());
-		
-	}
+//	public void testIsBusted1() {
+//		Hand hand = new Hand();
+//		hand.addCard(new Card(CardSuit.C, CardRank.KING));
+//		hand.addCard(new Card(CardSuit.C, CardRank.QUEEN));
+//		hand.addCard(new Card(CardSuit.C, CardRank.JACK));
+//		assertTrue(hand.isBusted());
+//		
+//	}
 	
-	public void testIsBusted2() {
-		Hand hand = new Hand();
-		hand.addCard(new Card(CardSuit.C, CardRank.NINE));
-		hand.addCard(new Card(CardSuit.H, CardRank.ACE));
-		hand.addCard(new Card(CardSuit.S, CardRank.ACE));
-		assertFalse(hand.isBusted());
-		
-	}
+//	public void testIsBusted2() {
+//		Hand hand = new Hand();
+//		hand.addCard(new Card(CardSuit.C, CardRank.NINE));
+//		hand.addCard(new Card(CardSuit.H, CardRank.ACE));
+//		hand.addCard(new Card(CardSuit.S, CardRank.ACE));
+//		assertFalse(hand.isBusted());
+//		
+//	}
 
 }

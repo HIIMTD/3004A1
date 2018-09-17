@@ -9,15 +9,12 @@ public class Hand {
 	private List<Card> handcards;
 	private int point;
 
-	private boolean bust;
-	private boolean soft17;
+
 	
 	public Hand() {
 		this.handcards = new ArrayList<Card>();
 		point = 0;
 
-		bust = false;
-		soft17 = false;
 	}
 	
 	public void addCard(Card card) {
@@ -35,10 +32,7 @@ public class Hand {
 			tempPoint += card.getRank().getValue();
 			point = tempPoint;
 		
-		if (tempPoint > 21 && numberOfAce == 0) {
-			bust = true;
-			point = tempPoint;
-		}else if (tempPoint >21 && numberOfAce > 0) {
+		}if (tempPoint >21 && numberOfAce > 0) {
 			while(numberOfAce > 0) {
 			tempPoint -= 10;
 			numberOfAce --;
@@ -52,7 +46,7 @@ public class Hand {
 		
 
 		}
-	}
+	
 	
 
 	public int getHandSize() {
@@ -63,14 +57,12 @@ public class Hand {
 //	public boolean isBlackjack() {
 //		return blackjack;
 //	}
+//	
+//	public boolean isBusted() {
+//		return bust;
+//	}
 	
-	public boolean isBusted() {
-		return bust;
-	}
-	
-	private boolean isSoft17() {
-		return soft17;
-	}
+
 //	public boolean canDealerHit() {
 //		if (getValue() < 17 || isSoft17() ) {
 //			return true;
