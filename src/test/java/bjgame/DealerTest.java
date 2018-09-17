@@ -60,5 +60,18 @@ public class DealerTest extends TestCase{
 		assertEquals(21, dealer.getHand1().getPoints());
 	}
 	
+	//test dealer busted
+	public void testIsBusted1() {
+		Dealer dealer = new Dealer();
+		dealer.firstTwoDraw(new Card(CardSuit.H, CardRank.KING), new Card(CardSuit.S, CardRank.KING));
+		assertFalse(dealer.isBlackjack());
+		assertEquals(20, dealer.getHand1().getPoints());
+		dealer.hit(new Card(CardSuit.D, CardRank.KING));
+		assertFalse(dealer.isBlackjack());
+		assertTrue(dealer.isBusted());
+		assertEquals(30, dealer.getHand1().getPoints());
+		
+	}
+	
 	
 }
