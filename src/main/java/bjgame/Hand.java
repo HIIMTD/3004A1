@@ -8,14 +8,14 @@ import javax.print.attribute.standard.PrinterLocation;
 public class Hand {
 	private List<Card> handcards;
 	private int point;
-	private boolean blackjack;
+
 	private boolean bust;
 	private boolean soft17;
 	
 	public Hand() {
 		this.handcards = new ArrayList<Card>();
 		point = 0;
-		blackjack = false;
+
 		bust = false;
 		soft17 = false;
 	}
@@ -34,12 +34,7 @@ public class Hand {
 			}
 			tempPoint += card.getRank().getValue();
 			point = tempPoint;
-			
-		}if (tempPoint == 21) {
-			blackjack = true;
-			point = tempPoint;
-			
-		}
+		
 		if (tempPoint > 21 && numberOfAce == 0) {
 			bust = true;
 			point = tempPoint;
@@ -56,6 +51,7 @@ public class Hand {
 		}
 		
 
+		}
 	}
 	
 
@@ -64,9 +60,9 @@ public class Hand {
 	}
 	
 	
-	public boolean isBlackjack() {
-		return blackjack;
-	}
+//	public boolean isBlackjack() {
+//		return blackjack;
+//	}
 	
 	public boolean isBusted() {
 		return bust;

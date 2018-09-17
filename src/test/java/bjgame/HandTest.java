@@ -50,14 +50,14 @@ public class HandTest extends TestCase{
 	
 	
 	//test blackjack
-	public void testIsBackJack() {
-		Hand hand = new Hand();
-		hand.addCard(new Card(CardSuit.C, CardRank.ACE));
-		assertFalse(hand.isBlackjack());
-		
-		hand.addCard(new Card(CardSuit.S, CardRank.KING));
-		assertTrue(hand.isBlackjack());
-	}
+//	public void testIsBackJack() {
+//		Hand hand = new Hand();
+//		hand.addCard(new Card(CardSuit.C, CardRank.ACE));
+//		assertFalse(hand.isBlackjack());
+//		
+//		hand.addCard(new Card(CardSuit.S, CardRank.KING));
+//		assertTrue(hand.isBlackjack());
+//	}
 	
 	//test burst
 	public void testIsBusted1() {
