@@ -4,7 +4,7 @@ import junit.framework.TestCase;
 
 public class PlayerTest extends TestCase {
 	
-	//start with blackjack
+	//start without blackjack
 	public void testStart1() {
 		Player player = new Player();
 		player.firstTwoDraw(new Card(CardSuit.H, CardRank.SEVEN), new Card(CardSuit.S, CardRank.NINE));
@@ -12,8 +12,17 @@ public class PlayerTest extends TestCase {
 		assertEquals(16, player.getHand1().getPoints());
 		
 	}
-
+	
 	public void testStart2() {
+		Player player = new Player();
+		player.firstTwoDraw(new Card(CardSuit.C, CardRank.ACE), new Card(CardSuit.S, CardRank.NINE));
+		assertFalse(player.isBlackjack());
+		assertEquals(20, player.getHand1().getPoints());
+		
+	}
+
+	//start with blackjack
+	public void testStart3() {
 		Player player = new Player();
 		player.firstTwoDraw(new Card(CardSuit.S, CardRank.TEN), new Card(CardSuit.H, CardRank.ACE));
 		assertTrue(player.isBlackjack());
