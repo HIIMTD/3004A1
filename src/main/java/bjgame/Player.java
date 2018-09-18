@@ -2,16 +2,21 @@ package bjgame;
 
 public class Player {
 
-	private Hand pHand1;
+	private Hand pHand1 = new Hand();
 	//private Hand pHand2;
 	private boolean blackjack;
 	private boolean bust;
 
 	public Player() {
-		pHand1 = new Hand();
+		reset();
+	}
+	
+	public void reset() {
+		pHand1.reset();
 		blackjack = false;
 		bust = false;
 	}
+	
 	public Hand getHand1() {return pHand1;}
 	
 	public void firstTwoDraw(Card card1, Card card2) {

@@ -5,7 +5,7 @@ import java.util.List;
 
 
 public class Hand {
-	private List<Card> handcards;
+	private List<Card> handcards = new ArrayList<Card>();
 	private int point;
 	int numberOfAce;
 	int numberOfTen;
@@ -13,16 +13,23 @@ public class Hand {
 
 	
 	public Hand() {
-		this.handcards = new ArrayList<Card>();
+		reset();
+	}
+	
+	public void reset() {
+		handcards.clear();
 		point = 0;
 		numberOfAce = 0;
 		numberOfTen = 0;
-
 	}
 	
 	public void addCard(Card card) {
 		handcards.add(card);
 		addPoints();
+	}
+	
+	public List<Card> getHandcards() {
+		return handcards;
 	}
 	
 	public void addPoints() {
