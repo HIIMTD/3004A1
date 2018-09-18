@@ -4,13 +4,13 @@ public class Game {
 	private Player player;
 	private Dealer dealer;
 	private Deck deck;
-	private boolean end;
+	//private boolean end;
 
 	public Game() {
 		player = new Player();
 		dealer = new Dealer();
 		deck = new Deck();
-		end = false;
+		//end = false;
 	}
 	
 	public Player getPlayer() {
@@ -29,6 +29,7 @@ public class Game {
 	public void startConsoleGame() {
 		if (deck.size() < 15) {
 			deck.createDeck();
+			System.out.println("Not enought cards, shuffle cards");
 		}
 		player.reset();
 		dealer.reset();
@@ -105,7 +106,7 @@ public class Game {
 	public void printGameStatus() {
 		System.out.println("Player get" + player.getHand1().getHandcards());
 		System.out.println("Player has " + player.getHand1().getPoints()+ " points");
-		System.out.println("Dealer get" + dealer.getHand1().getHandcards());
-		System.out.println("Dealer has " + dealer.getHand1().getPoints()+" points");
+		System.out.println("Dealer get card " + dealer.getHand1().getHandcards().get(0) + " face up");
+		//System.out.println("Dealer has " + dealer.getHand1().getPoints()+" points");
 	}
 }

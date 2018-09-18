@@ -26,4 +26,16 @@ public class CardTest extends TestCase {
 		Card card3 = new Card(CardSuit.D, CardRank.KING);
 		assertEquals(10, card3.getRank().getValue());
 	}
+	
+	public void testCardByInput() {
+		Card card1 = new Card("CQ");
+		assertEquals(CardSuit.C, card1.getSuit());
+		assertEquals(CardRank.QUEEN,card1.getRank());
+		Card card2 = new Card("HA");
+		assertEquals(CardSuit.H, card1.getSuit());
+		assertEquals(CardRank.ACE,card1.getRank());
+		Card card3 = new Card("D5");
+		assertEquals(CardSuit.D, card1.getSuit());
+		assertEquals(CardRank.FIVE,card1.getRank());
+	}
 }

@@ -11,6 +11,10 @@ public class Card {
 		this.rank = rank;
 	}
 	
+	public Card(String c) {
+
+	}
+	
 	//get function
 	public CardSuit getSuit() {return suit;}
 	public CardRank getRank() {return rank;}
