@@ -28,14 +28,21 @@ public class CardTest extends TestCase {
 	}
 	
 	public void testCardByInput() {
-		Card card1 = new Card("CQ");
-		assertEquals(CardSuit.C, card1.getSuit());
-		assertEquals(CardRank.QUEEN,card1.getRank());
-		Card card2 = new Card("HA");
+		Card card1 = new Card("HQ");
 		assertEquals(CardSuit.H, card1.getSuit());
-		assertEquals(CardRank.ACE,card1.getRank());
+		assertEquals(CardRank.QUEEN,card1.getRank());
+		assertEquals(10, card1.getRank().getValue());
+		Card card2 = new Card("HA");
+		assertEquals(CardSuit.H, card2.getSuit());
+		assertEquals(CardRank.ACE,card2.getRank());
+		assertEquals(11, card2.getRank().getValue());
 		Card card3 = new Card("D5");
-		assertEquals(CardSuit.D, card1.getSuit());
-		assertEquals(CardRank.FIVE,card1.getRank());
+		assertEquals(CardSuit.D, card3.getSuit());
+		assertEquals(CardRank.FIVE,card3.getRank());
+		assertEquals(5, card3.getRank().getValue());
+		Card card4 = new Card("CK");
+		assertEquals(CardSuit.C, card4.getSuit());
+		assertEquals(CardRank.KING,card4.getRank());
+		assertEquals(10, card4.getRank().getValue());
 	}
 }
