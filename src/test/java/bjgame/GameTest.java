@@ -141,7 +141,7 @@ public class GameTest extends TestCase {
 		Game g = new Game();
 		Player p = g.getPlayer();
 		Dealer d = g.getDealer();
-		GameConsole.readFile();
+		//GameConsole.readFile();
 		p.firstTwoDraw(new Card("SK"), new Card("HA"));
 		d.firstTwoDraw(new Card("HQ"),new Card("CA"));
 		assertEquals(21, p.getHand1().getPoints());
@@ -152,11 +152,11 @@ public class GameTest extends TestCase {
 		
 	}
 	
-	public void testInutFile() {
+	public void testInutFile2() {
 		Game g = new Game();
 		Player p = g.getPlayer();
 		Dealer d = g.getDealer();
-		GameConsole.readFile();
+		//GameConsole.readFile();
 		p.firstTwoDraw(new Card("SK"), new Card("HQ"));
 		d.firstTwoDraw(new Card("SQ"),new Card("C5"));
 		assertEquals(20, p.getHand1().getPoints());
