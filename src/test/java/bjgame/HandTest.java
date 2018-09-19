@@ -12,6 +12,7 @@ public class HandTest extends TestCase{
 		assertEquals(10, handcards.getPoints());
 		handcards.addCard(new Card(CardSuit.H, CardRank.SEVEN));
 		assertEquals(17, handcards.getPoints());
+		System.out.println(handcards.getHandcards());
 				
 	}
 	
@@ -22,6 +23,8 @@ public class HandTest extends TestCase{
 		handcards.addCard(new Card(CardSuit.H, CardRank.ACE));
 		handcards.addCard(new Card(CardSuit.C, CardRank.EIGHT));
 		assertEquals(20, handcards.getPoints());
+		System.out.println(handcards.getHandcards());
+		
 				
 	}
 	
@@ -32,6 +35,7 @@ public class HandTest extends TestCase{
 		handcards.addCard(new Card(CardSuit.H, CardRank.EIGHT));
 		handcards.addCard(new Card(CardSuit.S, CardRank.NINE));
 		assertEquals(19, handcards.getPoints());
+		System.out.println(handcards.getHandcards());
 				
 	}
 	

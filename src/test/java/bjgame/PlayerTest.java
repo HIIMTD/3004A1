@@ -71,6 +71,19 @@ public class PlayerTest extends TestCase {
 		assertEquals(16, player.getHand1().getPoints());
 	}
 	
+	public void testHit5() {
+		Player player = new Player();
+		player.firstTwoDraw(new Card("D2"), new Card("C3"));
+		assertFalse(player.isBlackjack());
+		assertEquals(5, player.getHand1().getPoints());
+		player.hit(new Card("D8"));
+		assertFalse(player.isBlackjack());
+		assertEquals(13, player.getHand1().getPoints());
+		player.hit(new Card("D9"));
+		assertFalse(player.isBlackjack());
+		assertEquals(22, player.getHand1().getPoints());
+	}
+	
 	
 	//test player bust
 	public void testIsBusted1() {
