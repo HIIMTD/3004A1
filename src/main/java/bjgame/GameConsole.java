@@ -15,11 +15,11 @@ import org.omg.PortableServer.POAPackage.WrongAdapter;
 
 public class GameConsole {
 	
-	public ArrayList<String> readFile(){
+	public static ArrayList<String> readFile(){
 		
 		Scanner f = new Scanner(System.in);
 		String filename = f.nextLine();
-		String path = "scr/main/resources" + filename;
+		String path = "scr/main/resources/" + filename;
 		String line = null;
 		String temp = "";
 		try {
@@ -107,7 +107,9 @@ public class GameConsole {
 				boolean isContinuef = true;
 				while(isContinuef) {
 				System.out.println("Please provide the file name:");
-				
+				ArrayList<String> getInput = new ArrayList<String>();
+				GameConsole.readFile();
+			
 //				String commands= "";
 //				g = new Game();
 //				g.startFileGame(commands);

@@ -1,5 +1,7 @@
 package bjgame;
 
+import java.nio.file.ReadOnlyFileSystemException;
+
 import junit.framework.TestCase;
 
 public class GameTest extends TestCase {
@@ -132,7 +134,43 @@ public class GameTest extends TestCase {
 		assertTrue(d.stand());
 		assertEquals(1, g.hasWinner(true));
 	}
-
 	
+	
+	//input file SK HA HQ CA
+	public void testInutFile1() {
+		Game g = new Game();
+		Player p = g.getPlayer();
+		Dealer d = g.getDealer();
+		GameConsole.readFile();
+		p.firstTwoDraw(new Card("SK"), new Card("HA"));
+		d.firstTwoDraw(new Card("HQ"),new Card("CA"));
+		assertEquals(21, p.getHand1().getPoints());
+		assertEquals(21, d.getHand1().getPoints());
+		assertTrue(p.isBlackjack());
+		assertTrue(d.isBlackjack());
+		assertEquals(1, g.hasWinner(true));
+		
+	}
+	
+	public void testInutFile() {
+		Game g = new Game();
+		Player p = g.getPlayer();
+		Dealer d = g.getDealer();
+		GameConsole.readFile();
+		p.firstTwoDraw(new Card("SK"), new Card("HQ"));
+		d.firstTwoDraw(new Card("SQ"),new Card("C5"));
+		assertEquals(20, p.getHand1().getPoints());
+		assertEquals(15, d.getHand1().getPoints());
+		assertFalse(p.isBlackjack());
+		assertFalse(d.isBlackjack());
+		assertEquals(0, g.hasWinner(false));
+		assertEquals(false,d.stand());
+		d.getHand1().addCard(new Card("DJ"));
+		assertEquals(true,d.stand());
+		assertEquals(25, d.getHand1().getPoints());
+		assertEquals(true,d.isBusted());
+		assertEquals(2, g.hasWinner(true));
+		
+	}
 	
 }
