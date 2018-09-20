@@ -2,8 +2,6 @@ package bjgame;
 
 import java.util.List;
 
-import org.omg.CORBA.SystemException;
-
 public class Game {
 	private Player player;
 	private Dealer dealer;
@@ -33,7 +31,7 @@ public class Game {
 	public void startConsoleGame() {
 		if (deck.size() < 15) {
 			deck.createDeck();
-			System.out.println("Not enought cards, shuffle cards");
+			System.out.println("shuffle cards");
 		}
 		player.reset();
 		dealer.reset();

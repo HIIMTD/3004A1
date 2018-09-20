@@ -1,7 +1,5 @@
 package bjgame;
 
-import javax.management.RuntimeErrorException;
-
 public class Card {
 	
 	private CardRank rank;

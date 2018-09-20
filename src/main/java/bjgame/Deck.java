@@ -28,7 +28,6 @@ public class Deck {
 //			System.out.println(deck.get(i));
 //		}
 	}
-	
 
 	public int size() {
 		return cards.size();

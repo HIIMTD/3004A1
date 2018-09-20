@@ -1,13 +1,9 @@
 package bjgame;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.NotActiveException;
-import java.nio.channels.NonWritableChannelException;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,8 +11,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
-
-import org.omg.PortableServer.POAPackage.WrongAdapter;
 
 public class GameConsole {
 
@@ -26,6 +20,7 @@ public class GameConsole {
 		String path = Paths.get("src/main/resources", filename).toAbsolutePath().toString();
 		String line = null;
 		String temp = "";
+
 		try {
 			// FileReader reads text files in the default encoding.
 			FileReader fileReader = new FileReader(path);
@@ -45,10 +40,12 @@ public class GameConsole {
 			// tempList.get();
 
 		} catch (FileNotFoundException e) {
-			throw new RuntimeException("Wrong filename or file not exist: ", e);
+			throw new RuntimeException("Wrong filename or file not exist, quit program ", e);
+			
 		} catch (IOException ex) {
-			throw new RuntimeException("Error reading file '" + filename + "'", ex);
+			throw new RuntimeException("Error reading file quit program" + filename + "'", ex);
 		}
+		
 	}
 	
 	public static boolean hasDuplicatedCards(List<String> inputs) {
@@ -109,7 +106,7 @@ public class GameConsole {
 						result = g.hasWinner(true);
 					}
 
-					System.out.println("Game result: " + result);
+					//System.out.println("Game result: " + result);
 					System.out.println("press C to continuue with a new game, press any other key to quit");
 					if (!s.nextLine().equals("C")) {
 						isContinue = false;

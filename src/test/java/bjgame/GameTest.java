@@ -135,6 +135,26 @@ public class GameTest extends TestCase {
 		assertEquals(1, g.hasWinner(true));
 	}
 	
+	public void testGame8() {
+		Game g = new Game();
+		Player p = g.getPlayer();
+		Dealer d = g.getDealer();
+		p.firstTwoDraw(new Card(CardSuit.S, CardRank.NINE), new Card(CardSuit.D, CardRank.NINE));
+		d.firstTwoDraw(new Card(CardSuit.H, CardRank.ACE),new Card(CardSuit.S, CardRank.SIX));
+		assertEquals(18, p.getHand1().getPoints());
+		assertEquals(17, d.getHand1().getPoints());
+		assertFalse(p.isBlackjack());
+		assertFalse(d.isBlackjack());
+		//assertTrue(d.isSoft17());
+		assertEquals(0, g.hasWinner(false));
+		assertFalse(p.isBusted());
+		//assertFalse(d.stand());
+		d.hit(new Card(CardSuit.D, CardRank.THREE));
+		assertEquals(20, d.getHand1().getPoints());
+		assertFalse(d.isSoft17());
+		assertTrue(d.stand());
+		assertEquals(1, g.hasWinner(true));
+	}
 	
 	//input file SK HA HQ CA
 	public void testInutFile1() {

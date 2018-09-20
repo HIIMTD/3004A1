@@ -6,7 +6,7 @@ public class Dealer {
 	// private Hand pHand2;
 	private boolean blackjack;
 	private boolean bust;
-	private boolean isSoft17;
+	private boolean soft17;
 
 	public Dealer() {
 		reset();
@@ -16,7 +16,7 @@ public class Dealer {
 		pHand1.reset();
 		blackjack = false;
 		bust = false;
-		isSoft17 = false;
+		soft17 = false;
 	}
 	
 
@@ -45,9 +45,9 @@ public class Dealer {
 
 	public boolean isSoft17() {
 		if (pHand1.getPoints() == 17 && pHand1.numberOfAce == 1 && pHand1.numberOfTen == 0) {
-			isSoft17 = true;
+			soft17 = true;
 		}
-		return isSoft17;
+		return soft17;
 	}
 
 	public boolean isBusted() {
@@ -58,10 +58,11 @@ public class Dealer {
 	}
 
 	public boolean stand() {
-		if (pHand1.getPoints() < 17 || isSoft17()) {
+		if (pHand1.getPoints() < 17 || soft17 == true) {
 			return false;
-		}
+		}else {
 		return true;
+		}
 	}
 	
 	public void printHands() {

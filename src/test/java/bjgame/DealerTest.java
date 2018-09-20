@@ -115,6 +115,7 @@ public class DealerTest extends TestCase {
 		Dealer dealer = new Dealer();
 		dealer.firstTwoDraw(new Card(CardSuit.H, CardRank.NINE), new Card(CardSuit.S, CardRank.KING));
 		assertEquals(19, dealer.getHand1().getPoints());
+		assertFalse(dealer.isSoft17());
 		assertTrue(dealer.stand());
 	}
 
@@ -131,6 +132,7 @@ public class DealerTest extends TestCase {
 		Dealer dealer = new Dealer();
 		dealer.firstTwoDraw(new Card(CardSuit.H, CardRank.SIX), new Card(CardSuit.S, CardRank.ACE));
 		assertEquals(17, dealer.getHand1().getPoints());
+		assertTrue(dealer.isSoft17());
 		assertFalse(dealer.stand());
 	}
 
@@ -142,7 +144,9 @@ public class DealerTest extends TestCase {
 		assertFalse(dealer.stand());
 		dealer.hit(new Card(CardSuit.S, CardRank.ACE));
 		assertEquals(17, dealer.getHand1().getPoints());
+		assertTrue(dealer.isSoft17());
 		assertFalse(dealer.stand());
+
 	}
 
 	// 21 by blackjack
