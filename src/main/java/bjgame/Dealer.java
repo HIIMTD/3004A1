@@ -63,4 +63,8 @@ public class Dealer {
 		}
 		return true;
 	}
+	
+	public void printHands() {
+		System.out.println("Dealer hand " + pHand1.getHandcards() + " - " + pHand1.getPoints());
+	}
 }

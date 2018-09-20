@@ -44,5 +44,9 @@ public class CardTest extends TestCase {
 		assertEquals(CardSuit.C, card4.getSuit());
 		assertEquals(CardRank.KING,card4.getRank());
 		assertEquals(10, card4.getRank().getValue());
+		
+		card4 = new Card("C10");
+		assertEquals(CardSuit.C, card4.getSuit());
+		assertEquals(CardRank.TEN,card4.getRank());
 	}
 }

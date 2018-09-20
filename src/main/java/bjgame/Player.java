@@ -44,6 +44,10 @@ public class Player {
 		return bust;
 	}
 	
+	public void printHands() {
+		System.out.println("Player hand " + pHand1.getHandcards() + " - " + pHand1.getPoints());
+	}
+	
 //	public boolean isBlackjack() {
 //	return blackjack;
 //}

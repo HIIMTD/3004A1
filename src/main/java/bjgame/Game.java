@@ -1,5 +1,9 @@
 package bjgame;
 
+import java.util.List;
+
+import org.omg.CORBA.SystemException;
+
 public class Game {
 	private Player player;
 	private Dealer dealer;
@@ -38,9 +42,71 @@ public class Game {
 		dealer.firstTwoDraw(deck.draw(), deck.draw());
 	}
 	
-	public void startFileGame(String commands) {
+	public void startFileGame(List<String> commands) throws RuntimeException {
+		if (commands.size() < 4) {
+			throw new RuntimeException("invalid commands: " + commands);
+		}
 		player.reset();
 		dealer.reset();
+		
+		Card card1 = new Card(commands.get(0));
+		Card card2 = new Card(commands.get(1));
+		Card card3 = new Card(commands.get(2));
+		Card card4 = new Card(commands.get(3));
+		
+		player.firstTwoDraw(card1, card2);
+		dealer.firstTwoDraw(card3, card4);
+		
+		printGameStatus();
+		if (hasWinner(false) != 0) {
+			return;
+		}
+		
+		boolean gameOver = false;
+		for (int i = 4; i < commands.size() && !gameOver; i++) {
+			String command = commands.get(i);
+			switch (command) {
+			case "H":
+				System.out.println("Player hits");
+				if (commands.get(i+1) == null) {
+					throw new RuntimeException("invalid commands, there should be a card after Hit");
+				}
+				Card card = new Card(commands.get(i+1));
+				player.hit(card);
+				player.printHands();
+				i++;
+				if (hasWinner(false) != 0) {
+					gameOver = true;
+				}
+				break;
+			case "S":
+				System.out.println("Player stands");
+				for (int j = i+1; j < commands.size(); j++) {
+					if (dealer.stand()) {
+						System.out.println("Dealer stand cannot accept any more cards");
+						throw new RuntimeException("Dealer stand cannot accept any more cards");
+					}
+					card = new Card(commands.get(j));
+					System.out.println("Dealer hit");
+					dealer.hit(card);
+					dealer.printHands();
+				}
+				
+				if (!dealer.stand()) {
+					System.out.println("Dealer cannot stand, has to hit");
+					throw new RuntimeException("Dealer cannot stand, has to hit");
+				}
+				hasWinner(true);
+				gameOver = true;
+				break;
+			default:
+			}
+		}
+		
+		if (hasWinner(false) == 0) {
+			System.out.println("Game is not over, player has to hit or stand");
+		}
+		
 	}
 //	
 //	public boolean isEnd() {
@@ -104,7 +170,7 @@ public class Game {
 	}
 	
 	public void printGameStatus() {
-		System.out.println("Player get" + player.getHand1().getHandcards());
+		System.out.println("Player get " + player.getHand1().getHandcards());
 		System.out.println("Player has " + player.getHand1().getPoints()+ " points");
 		System.out.println("Dealer get card " + dealer.getHand1().getHandcards().get(0) + " face up");
 		//System.out.println("Dealer has " + dealer.getHand1().getPoints()+" points");
