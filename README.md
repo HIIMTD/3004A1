@@ -8,3 +8,5 @@ How to run:
 
 Console input mode is a normal blackjack game.
 File input game is a cheating game with existed input files.
+
+![BJGAME](https://user-images.githubusercontent.com/35431615/57425777-9fdf2c80-71ea-11e9-82eb-734e9c935afb.png)
